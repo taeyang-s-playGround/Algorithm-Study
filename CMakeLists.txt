@@ -3,4 +3,5 @@ project(Algorithm_Study)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Algorithm_Study main.cpp)
+add_executable(Algorithm_Study main.cpp
+)
