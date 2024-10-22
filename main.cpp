@@ -4,7 +4,13 @@
 
 using namespace std;
 
+//2742
 int main() {
+    int A, B, C;
+    cin >> A;
+    for (int i = A; i >= 1; i--) {
+        cout << i << "\n";
+    }
 
     return 0;
 }
@@ -22,4 +28,4 @@ int main() {
     }
     return 0;
 }
-/*
+*/
