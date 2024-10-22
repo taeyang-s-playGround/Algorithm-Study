@@ -4,6 +4,25 @@
 
 using namespace std;
 
+
+
+/*
+//5565
+int main() {
+    int allPrice, price, optionCounts;
+
+    cin >> allPrice;
+
+    for (int i = 0; i < 9; ++i) {
+        cin >> price;
+        allPrice -= price;
+    }
+
+    cout << allPrice;
+
+    return 0;
+}
+
 //9325
 int main() {
     int testcase, carPrice, optionCounts;
@@ -29,7 +48,7 @@ int main() {
     return 0;
 }
 
-/*
+
 //2742
 int main() {
     int A, B, C;
