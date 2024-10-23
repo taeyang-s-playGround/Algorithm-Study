@@ -1,10 +1,34 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
 
+//1408
+int main() {
+
+    //1번 시간 = 현재 시간
+    //2번 시간 = 임무를 시작한 시간
+    // 구해야 하는 시간 = 임무를 시작한 시간(2번) - 현재 시간?(1번)
+    //만약 1번이 3시고 2번이 1시라면? (if (1>2))
+    // 구해야하는 시간 = 임무를 시작한 시간(2번) - 현재 시간 + 24시간
+
+    string firstTime, secondTime, final;
+    int hours, minutes, seconds;
+
+    cin >> firstTime >> secondTime;
+    istringstream ss(firstTime);
+
+    string stringBuffer;
+    getline(ss, stringBuffer, ':');
+    ss >> hours >> minutes >> seconds;
+
+    cout << hours << ":" << minutes << ":" << seconds;
+
+    return 0;
+}
 
 /*
 //5565
