@@ -3,7 +3,7 @@ package algo.algorithm;
 import java.util.Scanner;
 
 //주사위
-public class B1041 {
+public class B1041Later {
 
     public static void main(String[] args) {
 
