@@ -3,7 +3,7 @@ package algo.algorithm;
 import java.util.Scanner;
 
 public class algo6 {
-    static boolean isTrue = false; //일단 false로 초기화
+    static boolean isYes = false; //일단 false로 초기화
     static int target; //sum의 절반을 저장할 변수
 
     public static void main(String[] args) {
@@ -17,27 +17,36 @@ public class algo6 {
             total += nums[i];
         }
 
-        if (total % 2 != 0) {
+        if (total % 2 != 0) { //토탈이 2로 나눠지지 않으면 NO
             System.out.println("NO");
             return;
         }
 
         target = total / 2;
-
-        dfs(nums, 0, 0);
-
-        System.out.println(isTrue ? "YES" : "NO");
-    }
-
-    static void dfs(int[] nums, int index, int sum) {
-        if (isTrue || sum > target) return;
-
-        if (sum == target) {
-            isTrue = true;
+        int zeroCount = 0; //0의 갯수를 세는 변수
+        /*
+        if (zeroCount.equals(0)) { //토탈이 0이면 YES
+            System.out.println("YES");
             return;
         }
 
-        if (index >= nums.length) return;
+         */
+        dfs(nums, 0, 0);
+
+        System.out.println(isYes ? "YES" : "NO");
+    }
+
+
+
+    static void dfs(int[] nums, int index, int sum) {
+        if (isYes || sum > target) return;
+
+        if (sum == target) {
+            isYes = true;
+            return;
+        }
+
+        if (index >= nums.length) return; //인덱스가 숫자 갯수보다 커지면 return
 
         dfs(nums, index + 1, sum + nums[index]);
 
@@ -46,7 +55,6 @@ public class algo6 {
 }
 
 /*
-
 6
 1 3 5 6 7 10
 */
