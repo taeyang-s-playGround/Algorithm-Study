@@ -1,56 +1,55 @@
 package algo.algorithm;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.Set;
 
 public class algo8 {
-    static int minCount = Integer.MAX_VALUE;
+    public static int execute(int start, int target) {
+        if (start == target) return 0;
+
+        Queue<Integer> queue = new LinkedList<>();
+        Set<Integer> visited = new HashSet<>();
+
+        queue.offer(start);
+        visited.add(start);
+
+        int level = 0;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            level++;
+
+            for (int i = 0; i < size; i++) {
+                int current = queue.poll();
+
+                int[] nextMoves = {current + 1, current - 1, current + 5};
+
+                for (int next : nextMoves) {
+                    if (next == target) {
+                        return level;
+                    }
+
+                    if (next >= 0 && !visited.contains(next)) {
+                        visited.add(next);
+                        queue.offer(next);
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        int start = scanner.nextInt();
+        int target = scanner.nextInt();
 
-        int n = sc.nextInt(); // 동전 종류 수
-        int[] coins = new int[n];
-        for (int i = 0; i < n; i++) {
-            coins[i] = sc.nextInt();
-        }
-        int amount = sc.nextInt(); // 목표 금액
-
-        Arrays.sort(coins);
-        reverse(coins);
-
-        dfs(coins, amount, 0, 0);
-
-        System.out.println(minCount == Integer.MAX_VALUE ? -1 : minCount);
-    }
-
-
-    public static void dfs(int[] coins, int target, int sum, int count) {
-        if (sum > target || count >= minCount) return;
-        if (sum == target) {
-            minCount = Math.min(minCount, count);
-            return;
-        }
-
-        for (int coin : coins) {
-            dfs(coins, target, sum + coin, count + 1);
-        }
-    }
-
-    private static void reverse(int[] arr) {
-        for (int i = 0; i < arr.length / 2; i++) {
-            int tmp = arr[i];
-            arr[i] = arr[arr.length - 1 - i];
-            arr[arr.length - 1 - i] = tmp;
-        }
+        int result = execute(start, target);
+        System.out.println(result);
     }
 }
-
-/*
-
-3
-1 2 5
-15
-
-3
- */
