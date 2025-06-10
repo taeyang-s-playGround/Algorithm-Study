@@ -7,13 +7,20 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class algo8 {
-    public static int execute(int start, int target) {
-        if (start == target) return 0;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int start = scanner.nextInt();
+        int target = scanner.nextInt();
 
+        int result = execute(start, target);
+        System.out.println(result);
+    }
+
+    public static int execute(int start, int target) {
         Queue<Integer> queue = new LinkedList<>();
         Set<Integer> visited = new HashSet<>();
 
-        queue.offer(start);
+        queue.add(start);
         visited.add(start);
 
         int level = 0;
@@ -41,15 +48,5 @@ public class algo8 {
         }
 
         return 0;
-    }
-
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int start = scanner.nextInt();
-        int target = scanner.nextInt();
-
-        int result = execute(start, target);
-        System.out.println(result);
     }
 }
